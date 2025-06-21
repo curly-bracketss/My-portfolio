@@ -97,14 +97,14 @@ export const ProjectsSection = () => {
                     <a
                       href={project.demoUrl}
                       target="_blank"
-                      className=" text-white duration-300"
+                      className="  duration-300"
                     >
                       <ExternalLink size={20} />
                     </a>
                     <a
                       href={project.githubUrl}
                       target="_blank"
-                      className="text-white duration-300"
+                      className=" duration-300"
                     >
                       <Github size={20} />
                     </a>
