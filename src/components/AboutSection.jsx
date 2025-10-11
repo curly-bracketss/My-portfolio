@@ -16,22 +16,19 @@ export const AboutSection = () => {
             </h3>
 
             <p className="text-muted-foreground">
-             l am the winner of the "Gələcəyi Yazanlar" scholarship and currently studying Full-Stack Development. I am always eager to improve myself and embrace innovations. I continuously seek opportunities to expand my expertise, I particularly in emerging trends and technologies within software development. My future goal is to become a Full-Stack Developer, building efficient, scalable, and user-friendly applications.
-
+Motivated and detail-oriented Front-End Developer with 1.5 years of professional experience in building responsive and user-friendly web applications. Began my development journey after winning the “Gələcəyi Yazanlar” scholarship program at Div Academy in 2024. Currently working as a Junior Front-End Developer and pursuing a BSc in Computer Science at UFAZ (University of France – Azerbaijan). Committed to continuous learning and professional growth, with a strong ambition to advance as a software engineer and contribute to innovative projects in the field of computer science.
             </p>
 
-            <p className="text-muted-foreground">
-              I'm passionate about being more experienced proffesional in this field.Now I'm studying at UFAZ as 2nd year bachelor student.For the next semester I'm 3rd year bachelor student as Computer Sciences student.I'm planning to get higher level of experience and job.
-            </p>
+                                                                                        
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
+              <a href="https://api.whatsapp.com/send/?phone=9940516706741" className="cosmic-button">
                 {" "}
                 Get In Touch
               </a>
 
               <a
-                href="https://www.canva.com/design/DAGpSpgMoKo/eQqY0XKjb957bRxaurcrCg/view?utm_content=DAGpSpgMoKo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h894652d4bb"
+                href="https://www.canva.com/design/DAGwWJ_l9j0/pG2tt9qMZ7oK4as25PF_uw/edit?utm_content=DAGwWJ_l9j0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
               Take a look CV
@@ -60,7 +57,7 @@ export const AboutSection = () => {
                   <User className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">Bachelor study</h4>
+                  <h4 className="font-semibold text-lg">3rd year BSc</h4>
                   <p className="text-muted-foreground">
                    Studying Computer Sciences.
                   </p>

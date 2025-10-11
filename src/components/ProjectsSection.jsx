@@ -1,7 +1,39 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
+ {
+    id: 6,
+    title: "IMDb",
+    description:
+      "Cloned IMDB is a responsive web application built with React.js and Tailwind CSS that allows users to explore detailed information about movies with some functionalities._________Hint:Before clicking the url of website first render data url after it click the url of website.",
+    image: "/projects/project6.png",
+    tags: ["HTML5", "Tailwind CSS", "MOCK API", "React.js"],
+    demoUrl: "https://imdb-six-theta.vercel.app/",
+    githubUrl: "https://github.com/curly-bracketss/IMDB",
+    dataUrl: "https://data-of-imdb.onrender.com/",
+    githubDataUrl: "https://github.com/curly-bracketss/data-of-IMDb"
+  },
+   {
+    id: 7,
+    title: "DuyArt",
+    description:
+      "DuyArt is a demo website built with React.js and Tailwind CSS that allows users to explore detailed information about the startup idea.This is created as demo version for presenting the idea in first stage in a competition.",
+    image: "/projects/project7.png",
+    tags: ["HTML5", "Tailwind CSS", "React.js"],
+    demoUrl: "https://duy-art.vercel.app/",
+    githubUrl: "https://github.com/curly-bracketss/DuyArt"
+  }
+  ,
   {
+    id: 5,
+    title: "Libraff.az",
+    description:
+      "Libraff.az in react.But not completed yet.",
+    image: "/projects/project5.png",
+    tags: ["HTML5", "Tailwind CSS", "MOCK API", "React.js"],
+    githubUrl: "https://github.com/curly-bracketss/Libraff",
+    githubDataUrl:"https://github.com/curly-bracketss/data-of-libraff.az"
+  }, {
     id: 1,
     title: "PapaJhons",
     description: "A responsive web project replicating the style and layout of the Papa John’s website. Built using HTML, Tailwind CSS, and JavaScript, this project includes essential pages and components that showcase a real-world pizza restaurant interface.",
@@ -9,6 +41,7 @@ const projects = [
     tags: ["JavaScript", "TailwindCSS", "RWD", "HTML5"],
     demoUrl: "https://papa-johns-ebon.vercel.app/",
     githubUrl: "https://github.com/curly-bracketss/PapaJohns",
+    githubDataUrl:"https://github.com/curly-bracketss/PapaData"
   },
   {
     id: 2,
@@ -16,7 +49,7 @@ const projects = [
     description:
       "Country App is a responsive web application built with React.js and Tailwind CSS that allows users to explore detailed information about countries around the world.",
     image: "/projects/project2.png",
-    tags: ["Tailwind CSS", "React.js", "RWD", "REST API"],
+    tags: ["Tailwind CSS", "React.js", "RWD", "MOCK API"],
     demoUrl: "https://country-app-alpha-six.vercel.app/",
     githubUrl: "https://github.com/curly-bracketss/Country-App",
   },
@@ -39,21 +72,11 @@ const projects = [
     tags: ["HTML5", "CSS3", "RWD"],
     demoUrl: "https://nan33.alwaysdata.net/index/apple.html",
     githubUrl: "https://github.com/curly-bracketss/Apple_",
-  },
-  {
-    id: 5,
-    title: "Libraff.az",
-    description:
-      "Libraff.az in react.But not completed yet.",
-    image: "/projects/project5.png",
-    tags: ["HTML5", "Tailwind CSS", "REST API", "React.js"],
-    demoUrl: "_",
-    githubUrl: "https://github.com/curly-bracketss/Libraff.az",
-  },
+  }
 ];
 
 export const ProjectsSection = () => {
-    return (
+  return (
     <section id="projects" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
@@ -88,28 +111,46 @@ export const ProjectsSection = () => {
                     </span>
                   ))}
                 </div>
-                  <h3 className="text-xl font-semibold mb-1 "> {project.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-4 ">
-                    {project.description}
-                  </p>
+                <h3 className="text-xl font-semibold mb-1 "> {project.title}</h3>
+                <p className="text-muted-foreground text-sm mb-4 ">
+                  {project.description}
+                </p>
                 <div className="flex justify-between items-center  ">
-                  <div className="flex space-x-3">
-                    <a
+                 <p>Website URLs:</p> <div className="flex space-x-3">
+                   {project.demoUrl && <a
                       href={project.demoUrl}
                       target="_blank"
-                      className=" text-white duration-300"
+                      className="  duration-300"
                     >
                       <ExternalLink size={20} />
-                    </a>
+                    </a>}
                     <a
                       href={project.githubUrl}
                       target="_blank"
-                      className="text-white duration-300"
+                      className=" duration-300"
                     >
                       <Github size={20} />
                     </a>
                   </div>
                 </div>
+                { project.githubDataUrl && <div className="flex justify-between items-center  ">
+                <p>Data URLs:</p>  <div className="flex space-x-3">
+                   {project.dataUrl &&<a
+                      href={project.dataUrl}
+                      target="_blank"
+                      className="  duration-300"
+                    >
+                      <ExternalLink size={20} />
+                    </a>}
+                    <a
+                      href={project.githubDataUrl}
+                      target="_blank"
+                      className=" duration-300"
+                    >
+                      <Github size={20} />
+                    </a>
+                  </div>
+                </div>}
               </div>
             </div>
           ))}
