@@ -28,7 +28,7 @@ Motivated and detail-oriented Front-End Developer with 1.5 years of professional
               </a>
 
               <a
-                href="https://www.canva.com/design/DAGwWJ_l9j0/pG2tt9qMZ7oK4as25PF_uw/edit?utm_content=DAGwWJ_l9j0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                href="https://www.canva.com/design/DAGwWJ_l9j0/K1mGRD3GUmSaZpn8KiH9RQ/view?utm_content=DAGwWJ_l9j0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha02b60911f"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
               Take a look CV
