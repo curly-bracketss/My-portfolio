@@ -1,8 +1,26 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
- {
+  {
     id: 6,
+    title: "Avankart.az",
+    description:
+      "E-commerce platform where I implemented responsive UI from Figma, integrated REST APIs, and improved UX through component optimization.",
+    image: "/projects/project9.png",
+    tags: ["JavaScript", "Tailwind CSS", "REST APIs", "Figma"],
+    demoUrl: "https://avankart.az",
+  },
+    {
+    id: 7,
+    title: "DADLY",
+    description:
+      "Meal recommendation web app with swipe-based interactions, built in React and connected to REST APIs for dynamic content.",
+    image: "/projects/project8.png",
+    tags: ["React.js", "JavaScript", "Tailwind CSS", "FAST API"],
+    demoUrl: "https://dadly.onrender.com",
+  },{
+
+    id: 9,
     title: "IMDb",
     description:
       "Cloned IMDB is a responsive web application built with React.js and Tailwind CSS that allows users to explore detailed information about movies with some functionalities._________Hint:Before clicking the url of website first render data url after it click the url of website.",
@@ -14,7 +32,7 @@ const projects = [
     githubDataUrl: "https://github.com/curly-bracketss/data-of-IMDb"
   },
    {
-    id: 7,
+    id: 8,
     title: "DuyArt",
     description:
       "DuyArt is a demo website built with React.js and Tailwind CSS that allows users to explore detailed information about the startup idea.This is created as demo version for presenting the idea in first stage in a competition.",
@@ -22,8 +40,8 @@ const projects = [
     tags: ["HTML5", "Tailwind CSS", "React.js"],
     demoUrl: "https://duy-art.vercel.app/",
     githubUrl: "https://github.com/curly-bracketss/DuyArt"
-  }
-  ,
+  },
+
   {
     id: 5,
     title: "Libraff.az",
@@ -117,20 +135,22 @@ export const ProjectsSection = () => {
                 </p>
                 <div className="flex justify-between items-center  ">
                  <p>Website URLs:</p> <div className="flex space-x-3">
-                   {project.demoUrl && <a
+                  {project.demoUrl && <a
                       href={project.demoUrl}
                       target="_blank"
                       className="  duration-300"
                     >
                       <ExternalLink size={20} />
                     </a>}
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      className=" duration-300"
-                    >
-                      <Github size={20} />
-                    </a>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        className=" duration-300"
+                      >
+                        <Github size={20} />
+                      </a>
+                    )}
                   </div>
                 </div>
                 { project.githubDataUrl && <div className="flex justify-between items-center  ">

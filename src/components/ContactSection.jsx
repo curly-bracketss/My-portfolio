@@ -1,72 +1,60 @@
-import {
-  Mail,
-  MapPin,
-  Phone
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+
+const contactItems = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "nazizli1112@gmail.com",
+    href: "mailto:nazizli1112@gmail.com",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+994 51 670 67 41",
+    href: "tel:+994516706741",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Baku, Azerbaijan",
+    href: "https://maps.google.com/?q=Baku,+Azerbaijan",
+  },
+];
+
 export const ContactSection = () => {
-
   return (
-      <div className=" mx-auto w-full flex flex-col items-center justify-center">
+    <section id="contact" className="py-24 px-4 relative">
+      <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary"> Touch</span>
+          Get In <span className="text-primary">Touch</span>
         </h2>
-
-        <p className="text-center text-muted-foreground mb-12 mx-auto">
-          Have a project in mind or want to collaborate? Feel free to reach out.
-          I'm always open to discussing new opportunities.
+        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          Have a question or want to work together? Reach out and I will respond
+          as soon as I can.
         </p>
 
-        <div className=" md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">
-              {" "}
-              Contact Information
-            </h3>
-
-            <div className="space-y-6 justify-center">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />{" "}
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {contactItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+              className="p-6 rounded-xl bg-card border border-border hover:border-primary/60 transition-colors"
+            >
+              <div className="flex items-center gap-4">
+                <span className="p-3 rounded-lg bg-primary/10 text-primary">
+                  <item.icon size={22} />
+                </span>
                 <div>
-                  <h4 className="font-medium"> Email</h4>
-                  <a
-                    href="mailto:nazizli1112@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    nazizli1112@gmail.com
-                  </a>
+                  <p className="text-sm text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold">{item.value}</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />{" "}
-                </div>
-                <div>
-                  <h4 className="font-medium"> Phone</h4>
-                  <a
-                    href="tel:+994 51 670 67 41"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    +994 51 670 67 41
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />{" "}
-                </div>
-                <div>
-                  <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Azerbaijan,Baku
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+            </a>
+          ))}
         </div>
       </div>
-
+    </section>
   );
 };

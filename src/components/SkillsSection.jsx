@@ -1,85 +1,96 @@
-import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { Code2, Database, Layout, Terminal, BrainCircuit } from "lucide-react";
 
 const skills = [
-  // Frontend
-  { name: "HTML/CSS", level: 95, category: "frontend" },
-  { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "React", level: 60, category: "frontend" },
-  { name: "Tailwind CSS", level: 90, category: "frontend" },
-  { name: "Bootstrap", level: 90, category: "frontend" },
-  { name: "AntDesign", level: 90, category: "frontend" },
-  { name: "Material UI", level: 90, category: "frontend" },
-  { name: "jQuery", level: 60, category: "frontend" },
-  { name: "SASS", level: 90, category: "frontend" },
-  { name: "RWD", level: 90, category: "frontend" },
-  { name: "RestAPI", level: 90, category: "frontend" },
+  {
+    category: "Frontend",
+    icon: Layout,
+    items: [
+      { name: "React.js", level: "Advanced" },
+      { name: "JavaScript", level: "Advanced" },
+      { name: "HTML5", level: "Advanced" },
+      { name: "CSS3 / SASS", level: "Advanced" },
+    ],
+  },
+  {
+    category: "UI & Libraries",
+    icon: Terminal,
+    items: [
+      { name: "Tailwind CSS", level: "Advanced" },
+      { name: "Bootstrap", level: "Proficient" },
+      { name: "Material UI", level: "Proficient" },
+      { name: "Ant Design", level: "Proficient" },
+      { name: "jQuery", level: "Intermediate" },
+    ],
+  },
 
- 
-  { name: "MongoDB", level: 50, category: "backend" },
-  { name: "MySQL", level: 75, category: "backend" },
-
-  { name: "Python", level: 75, category: "programming languages" },
-  { name: "C/C++", level: 50, category: "programming languages" },
-  { name: "Java", level: 50, category: "programming languages" },
-
-  { name: "Git/GitHub", level: 90, category: "tools" },
-  { name: "VS Code", level: 95, category: "tools" },
-  { name: "MS Office", level: 95, category: "tools" },
+  {
+    category: "Tools & Workflow",
+    icon: Terminal,
+    items: [
+      { name: "Git & GitHub", level: "Advanced" },
+      { name: "Figma", level: "Proficient" },
+      { name: "MS Office", level: "Proficient" },
+    ],
+  },
+  {
+    category: "Soft Skills",
+    icon: BrainCircuit,
+    items: [
+      { name: "Communication", level: "Strong" },
+      { name: "Problem-Solving", level: "Strong" },
+      { name: "Time Management", level: "Strong" },
+      { name: "Teamwork", level: "Strong" },
+      { name: "Adaptability", level: "Strong" },
+      { name: "Creativity", level: "Strong" },
+      { name: "Empathy", level: "Strong" },
+    ],
+  },
+  {
+    category: "Languages",
+    icon: Code2,
+    items: [
+      { name: "Azerbaijani", level: "Native" },
+      { name: "Turkish", level: "Advanced" },
+      { name: "English", level: "Intermediate" },
+      { name: "French", level: "Elementary" },
+      { name: "Russian", level: "Elementary" },
+    ],
+  },
 ];
 
-const categories = ["all", "frontend", "backend", "tools","programming languages"];
-
 export const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const filteredSkills = skills.filter(
-    (skill) => activeCategory === "all" || skill.category === activeCategory
-  );
   return (
-    <section id="skills" className="py-24 px-4 relative bg-secondary/30">
+    <section id="skills" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          My <span className="text-primary"> Skills</span>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          Technical <span className="text-primary"> Skills </span>
         </h2>
+        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          My technical expertise and technologies I work with.
+        </p>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, key) => (
-            <button
-              key={key}
-              onClick={() => setActiveCategory(category)}
-              className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
-                activeCategory === category
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-forefround hover:bd-secondary"
-              )}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill, key) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skills.map((skill, key) => (
             <div
               key={key}
-              className="bg-card p-6 rounded-lg shadow-xs card-hover"
+              className="bg-card p-6 rounded-xl border border-border shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="text-left mb-4">
-                <h3 className="font-semibold text-lg"> {skill.name}</h3>
-              </div>
-              <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
-                <div
-                  className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
-                  style={{ width: skill.level + "%" }}
-                />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                  <skill.icon size={24} />
+                </div>
+                <h3 className="text-xl font-semibold">{skill.category}</h3>
               </div>
 
-              <div className="text-right mt-1">
-                <span className="text-sm text-muted-foreground">
-                  {skill.level}%
-                </span>
+              <div className="space-y-4">
+                {skill.items.map((item, index) => (
+                  <div key={index} className="flex justify-between items-center">
+                    <span className="font-medium">{item.name}</span>
+                    <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
+                      {item.level}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

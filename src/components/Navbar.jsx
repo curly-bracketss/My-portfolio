@@ -1,91 +1,108 @@
-import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-scroll";
+import { Menu, X, Code2 } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", to: "home" },
+  { name: "About", to: "about" },
+  { name: "Skills", to: "skills" },
+  { name: "Projects", to: "projects" },
+  { name: "Contact", to: "contact" },
 ];
 
 export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav
-      className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
-      )}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-background/80 backdrop-blur-md shadow-md"
+          : "bg-transparent"
+      }`}
     >
-      <div className="container flex items-center justify-between">
-        <a
-          className="text-xl font-bold text-primary flex items-center"
-          href="#hero"
-        >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground"> Nazrin Azizli </span>{" "}
-            Portfolio
-          </span>
-        </a>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link
+            to="home"
+            spy={true}
+            smooth={true}
+            className="flex items-center gap-2 font-bold text-xl cursor-pointer"
+          >
+            <Code2 className="text-primary" size={28} />
+            <span>NA</span>
+          </Link>
 
-        {/* desktop nav */}
-        <div className="hidden md:flex space-x-8">
-          {navItems.map((item, key) => (
-            <a
-              key={key}
-              href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
-            >
-              {item.name}
-            </a>
-          ))}
-        </div>
-
-        {/* mobile nav */}
-
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
-        </button>
-
-        <div
-          className={cn(
-            "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
-            isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          )}
-        >
-          <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((item, key) => (
-              <a
-                key={key}
-                href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                onClick={() => setIsMenuOpen(false)}
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.to}
+                spy={true}
+                smooth={true}
+                offset={-80}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer relative group"
               >
                 {item.name}
-              </a>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              </Link>
             ))}
+            <ThemeToggle />
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div
+        className={`md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md shadow-lg transition-all duration-300 ${
+          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
+        <div className="flex flex-col p-4 space-y-4">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.to}
+              spy={true}
+              smooth={true}
+              offset={-80}
+              onClick={closeMenu}
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer py-2"
+            >
+              {item.name}
+            </Link>
+          ))}
+          <div className="pt-2 border-t border-border">
+            <ThemeToggle />
           </div>
         </div>
       </div>
     </nav>
   );
 };
+
