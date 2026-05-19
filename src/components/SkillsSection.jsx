@@ -1,98 +1,86 @@
-import { Code2, Database, Layout, Terminal, BrainCircuit } from "lucide-react";
+import { Code2, Layout, Database, Terminal, Settings } from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
 
 const skills = [
   {
-    category: "Frontend",
+    category: "Programming Languages",
+    icon: Code2,
+    items: ["JavaScript (ES6+)", "Python", "C"],
+  },
+  {
+    category: "Frontend Technologies",
     icon: Layout,
     items: [
-      { name: "React.js", level: "Advanced" },
-      { name: "JavaScript", level: "Advanced" },
-      { name: "HTML5", level: "Advanced" },
-      { name: "CSS3 / SASS", level: "Advanced" },
+      "HTML5",
+      "CSS3",
+      "React.js",
+      "Vue.js",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Material UI",
+      "Ant Design",
     ],
   },
   {
-    category: "UI & Libraries",
-    icon: Terminal,
+    category: "Concepts & Tools",
+    icon: Settings,
     items: [
-      { name: "Tailwind CSS", level: "Advanced" },
-      { name: "Bootstrap", level: "Proficient" },
-      { name: "Material UI", level: "Proficient" },
-      { name: "Ant Design", level: "Proficient" },
-      { name: "jQuery", level: "Intermediate" },
-    ],
-  },
-
-  {
-    category: "Tools & Workflow",
-    icon: Terminal,
-    items: [
-      { name: "Git & GitHub", level: "Advanced" },
-      { name: "Figma", level: "Proficient" },
-      { name: "MS Office", level: "Proficient" },
+      "RESTful API Integration",
+      "Responsive Web Design (RWD)",
+      "Flexbox & CSS Grid",
+      "Git & GitHub Workflow",
+      "Async/Await & Promises",
+      "Object-Oriented Programming (OOP)",
+      "Component-Based Architecture",
     ],
   },
   {
-    category: "Soft Skills",
-    icon: BrainCircuit,
-    items: [
-      { name: "Communication", level: "Strong" },
-      { name: "Problem-Solving", level: "Strong" },
-      { name: "Time Management", level: "Strong" },
-      { name: "Teamwork", level: "Strong" },
-      { name: "Adaptability", level: "Strong" },
-      { name: "Creativity", level: "Strong" },
-      { name: "Empathy", level: "Strong" },
-    ],
-  },
-  {
-    category: "Languages",
-    icon: Code2,
-    items: [
-      { name: "Azerbaijani", level: "Native" },
-      { name: "Turkish", level: "Advanced" },
-      { name: "English", level: "Intermediate" },
-      { name: "French", level: "Elementary" },
-      { name: "Russian", level: "Elementary" },
-    ],
+    category: "Databases",
+    icon: Database,
+    items: ["MySQL", "MongoDB"],
   },
 ];
 
 export const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 px-4 relative">
+    <section id="skills" className="py-24 px-6 relative">
+      <div className="section-divider mb-24" />
+
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Technical <span className="text-primary"> Skills </span>
-        </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          My technical expertise and technologies I work with.
-        </p>
+        <ScrollReveal>
+          <div className="max-w-2xl mx-auto text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
+              Technical Skills
+            </h2>
+            <p className="text-muted-foreground text-sm">
+              The languages, frameworks, and methodologies I work with.
+            </p>
+          </div>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {skills.map((skill, key) => (
-            <div
-              key={key}
-              className="bg-card p-6 rounded-xl border border-border shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                  <skill.icon size={24} />
+            <ScrollReveal key={key} delay={key * 0.05}>
+              <div className="h-full bg-card border border-border/60 hover:border-border rounded-xl p-6 transition-all duration-150">
+                <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-border/40">
+                  <skill.icon size={16} className="text-primary" />
+                  <h3 className="text-sm font-semibold text-foreground">
+                    {skill.category}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-semibold">{skill.category}</h3>
-              </div>
 
-              <div className="space-y-4">
-                {skill.items.map((item, index) => (
-                  <div key={index} className="flex justify-between items-center">
-                    <span className="font-medium">{item.name}</span>
-                    <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
-                      {item.level}
+                <div className="flex flex-wrap gap-2">
+                  {skill.items.map((item, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1.5 text-xs font-medium rounded-lg bg-secondary text-foreground border border-border/40 transition-colors hover:bg-secondary/80"
+                    >
+                      {item}
                     </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

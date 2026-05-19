@@ -1,94 +1,76 @@
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Download } from "lucide-react";
 import { Link } from "react-scroll";
 
 export const HeroSection = () => {
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 relative pt-16">
-      <div className="container mx-auto max-w-4xl text-center relative z-10">
-        {/* Greeting */}
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center px-6 relative pt-20"
+    >
+      <div className="container mx-auto max-w-3xl text-center relative z-10">
+        {/* Simple Availability Badge */}
         <div className="mb-6 animate-fade-in">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-            👋 Hello, I'm
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/[0.06] border border-primary/10 text-primary text-xs font-semibold uppercase tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            Open for Internships & Junior Roles
           </span>
         </div>
 
-        {/* Name */}
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-delay-1">
-          Nazrin <span className="text-primary">Azizli</span>
+        {/* Static, typographic Name */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground mb-6 animate-fade-in-delay-1 leading-[1.1]">
+          Nazrin Azizli
         </h1>
 
-        {/* Title */}
-        <h2 className="text-2xl md:text-3xl text-muted-foreground mb-8 animate-fade-in-delay-2">
-          React-Focused <span className="text-primary">Frontend Developer</span>
+        {/* Static Subheading */}
+        <h2 className="text-lg sm:text-2xl md:text-3xl font-medium text-muted-foreground mb-6 animate-fade-in-delay-2 max-w-2xl mx-auto">
+          React-focused Frontend Developer building clean, responsive interfaces.
         </h2>
 
-        {/* Description */}
-        <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-in-delay-3 leading-relaxed">
-          React-focused frontend developer building modern, responsive web applications.
-          I translate Figma designs into pixel-perfect UI, integrate REST APIs, and
-          optimize performance for a smooth user experience.
+        {/* Short, human description */}
+        <p className="text-sm sm:text-base text-muted-foreground mb-10 max-w-xl mx-auto animate-fade-in-delay-3 leading-relaxed">
+          I build modular web applications with React and JavaScript, translating Figma designs into structured components while prioritizing performance and clean code.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-delay-4">
+        {/* Refined CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12 animate-fade-in-delay-4">
           <Link
             to="projects"
             spy={true}
             smooth={true}
             offset={-80}
-            className="cosmic-button cursor-pointer inline-flex items-center gap-2"
+            className="btn-primary cursor-pointer"
           >
-            View My Work <ArrowRight size={20} />
+            Explore Projects <ArrowRight size={15} />
           </Link>
-          <button
-            onClick={scrollToContact}
-            className="px-6 py-3 rounded-full border border-border font-medium hover:bg-secondary transition-all duration-300 inline-flex items-center gap-2"
-          >
-            Get In Touch
-          </button>
-        </div>
-
-        {/* Social Links */}
-        <div className="flex justify-center gap-6 animate-fade-in-delay-4">
           <a
-            href="https://github.com/curly-bracketss"
+            href="../src/assets/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-full bg-card border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:scale-110"
-            aria-label="GitHub"
+            className="btn-outline"
           >
-            <Github size={24} />
-          </a>
-          <a
-            href="https://linkedin.com/in/nazrin-azizli"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full bg-card border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:scale-110"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={24} />
-          </a>
-          <a
-            href="mailto:nazizli1112@gmail.com"
-            className="p-3 rounded-full bg-card border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:scale-110"
-            aria-label="Email"
-          >
-            <Mail size={24} />
+            <Download size={15} /> Download CV(AZ)
           </a>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-border rounded-full flex justify-center pt-2">
-            <div className="w-1 h-3 bg-primary rounded-full animate-pulse" />
-          </div>
+        {/* Minimal Social Links */}
+        <div className="flex justify-center gap-4 animate-fade-in-delay-4">
+          {[
+            { icon: Github, href: "https://github.com/curly-bracketss", label: "GitHub" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/nazrin-azizli-844613292", label: "LinkedIn" },
+            { icon: Mail, href: "mailto:nazizli1112@gmail.com", label: "Email" },
+          ].map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target={social.href.startsWith("mailto") ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-150"
+              aria-label={social.label}
+              title={social.label}
+            >
+              <social.icon size={20} />
+            </a>
+          ))}
         </div>
       </div>
     </section>
